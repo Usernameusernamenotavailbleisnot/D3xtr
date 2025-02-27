@@ -1,0 +1,29 @@
+{
+    "name": "d3xtr",
+    "version": "1.0.0",
+    "description": "d3xtr",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "axios": "^1.6.2",
+      "axios-retry": "^3.9.1",
+      "chalk": "^4.1.2",
+      "commander": "^11.1.0",
+      "dotenv": "^16.3.1",
+      "ethers": "^5.7.2",
+      "figlet": "^1.7.0",
+      "gradient-string": "^2.0.2",
+      "http-proxy-agent": "^7.0.0",
+      "https-proxy-agent": "^7.0.2",
+      "joi": "^17.11.0",
+      "js-yaml": "^4.1.0",
+      "moment": "^2.29.4",
+      "node-cron": "^3.0.3",
+      "ora": "^5.4.1",
+      "proxy-agent": "^6.3.1",
+      "socks-proxy-agent": "^8.0.2",
+      "winston": "^3.11.0"
+    }
+  }
