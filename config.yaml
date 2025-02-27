@@ -1,0 +1,137 @@
+# Bot Configuration
+bot:
+  name: "D3xtr Bot"
+  useProxy: true
+  privateKeyPath: "./pk.txt"
+  proxyPath: "./proxy.txt"
+  defaultDelayMin: 5 # in seconds
+  defaultDelayMax: 15 # in seconds
+  runningDelay: 90000000 # in milliseconds, 25 hours (90000000 ms = 25 hours)
+
+network:
+  chainId: 84532
+  rpc: "https://sepolia.base.org"
+  blockExplorer: "https://base-sepolia.blockscout.com"
+  gasLimit: 500000
+  gasPrice: null # Will use automatic gas estimation
+
+faucet:
+  enabled: true
+  tokens:
+    - symbol: "USDC"
+      contract: "0xdC2de190a921D846B35EB92d195c9c3D9C08d1C2"
+      amount: 6000 # 6,000 USDC
+      decimals: 6  # USDC uses 6 decimals
+    - symbol: "wBNB"
+      contract: "0x0c55A5Ca96cedA5659D4f0E56707494274a98ae2"
+      amount: 10 # 10 BNB
+      decimals: 18
+    - symbol: "DXTR"
+      contract: "0x62725D7f09B4dF9b2B1d62C63bdEB1fBf9693E76"
+      amount: 10000 # 10,000 DXTR
+      decimals: 18
+    - symbol: "wETH"
+      contract: "0xf6E25a498DBf729621e561767f43a4d3041FdBc5"
+      amount: 2 # 2 ETH
+      decimals: 18
+  delayMin: 5 # in seconds
+  delayMax: 15 # in seconds
+  maxRetries: 3
+
+deposit:
+  enabled: true
+  percentage: 20 # Percentage of tokens to deposit from faucet
+  vaults:
+    - symbol: "USDC"
+      contract: "0xF143934804C28e40CC3439283c12cEBcC6949131"
+      methodId: "0x609e7624" # Correct method ID from transaction trace
+    - symbol: "wBNB"
+      contract: "0x1aE573496AF3CBc7215fD283bc838948c8e381F0"
+      methodId: "0x609e7624" # Correct method ID from transaction trace
+    - symbol: "DXTR"
+      contract: "0xFB9D5E8e8Eb1780031BC6c29279dFb9D9d3B155E"
+      methodId: "0x609e7624" # Correct method ID from transaction trace
+    - symbol: "wETH"
+      contract: "0x94a98e62229e249Ec5a4bd76d2b9AA01cb995738"
+      methodId: "0x609e7624" # Correct method ID from transaction trace
+  iterations: 1
+  delayMin: 10 # in seconds
+  delayMax: 20 # in seconds
+  maxRetries: 3
+
+stake:
+  enabled: true
+  contract: "0xB3e29778C2850EFe5957191b55E9a37AD8836E8a"
+  tokenVault: "0xFB9D5E8e8Eb1780031BC6c29279dFb9D9d3B155E"
+  stakePercentage: 30 # Percentage of DXTR to stake
+  unstakePercentage: 10 # Percentage of staked DXTR to unstake
+  iterations: 1
+  delayMin: 15 # in seconds
+  delayMax: 30 # in seconds
+  maxRetries: 3
+
+trade:
+  enabled: true
+  pairs:
+    - name: "BNB/USDC"
+      contract: "0xC9f19663218CeAaeD2b4206Ed6E06978a8798f6a"
+      baseToken: "wBNB"
+      quoteToken: "USDC"
+      minBuy: 0.1 # Minimum BNB to buy
+      maxBuy: 0.2 # Maximum BNB to buy
+      minSell: 0.1 # Minimum BNB to sell
+      maxSell: 0.2 # Maximum BNB to sell
+    - name: "ETH/USDC"
+      contract: "0x1768011F6488eA379b6e9089250ece9812B04fB5"
+      baseToken: "wETH"
+      quoteToken: "USDC"
+      minBuy: 0.1 # Minimum ETH to buy
+      maxBuy: 0.2 # Maximum ETH to buy
+      minSell: 0.1 # Minimum ETH to sell
+      maxSell: 0.2 # Maximum ETH to sell
+    - name: "DXTR/USDC"
+      contract: "0x89E7C75355c8F4F385dd28a1Fe5DBf2E00ab9B2A"
+      baseToken: "DXTR"
+      quoteToken: "USDC"
+      minBuy: 1 # Minimum DXTR to buy
+      maxBuy: 5 # Maximum DXTR to buy
+      minSell: 1 # Minimum DXTR to sell
+      maxSell: 5 # Maximum DXTR to sell
+    - name: "ETH/BNB"
+      contract: "0x96d0B13085719232335ed504163c4EDA2899e923"
+      baseToken: "wETH" 
+      quoteToken: "wBNB"
+      minBuy: 0.1 # Minimum ETH to buy
+      maxBuy: 0.2 # Maximum ETH to buy
+      minSell: 0.1 # Minimum ETH to sell
+      maxSell: 0.2 # Maximum ETH to sell
+  iterations: 1
+  delayMin: 30 # in seconds
+  delayMax: 60 # in seconds
+  maxRetries: 3
+
+liquidity:
+  enabled: true
+  contract: "0x14A7A196Ea479fE57A5D3432aC557bEbD88Cb974" # Liquidity contract
+  pairs:
+    # Only BNB-USDC pair
+    - token1:
+        symbol: "USDC"
+        address: "0xdC2de190a921D846B35EB92d195c9c3D9C08d1C2"
+        decimals: 6
+      token2:
+        symbol: "wBNB"
+        address: "0x0c55A5Ca96cedA5659D4f0E56707494274a98ae2"
+        decimals: 18
+      amount1: 90 # Amount of token1 (USDC)
+      amount2: 0.7 # Amount of token2 (BNB)
+      slippage1: 5 # Slippage percentage for token1
+      slippage2: 5 # Slippage percentage for token2
+      minPrice: 431.487 # Minimum price for token2 in token1 terms
+      maxPrice: 801.333 # Maximum price for token2 in token1 terms
+  
+  percentage: 10 # Percentage of tokens to use for liquidity
+  iterations: 1 # How many times to add liquidity
+  delayMin: 30 # Minimum delay in seconds between operations
+  delayMax: 60 # Maximum delay in seconds between operations
+  maxRetries: 3 # Maximum number of retries if operation fails
